@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_libro"
+            android:icon="@drawable/ic_menu_libro"
+            android:title="@string/menu_libro" />
+        <item
+            android:id="@+id/nav_reserva"
+            android:icon="@drawable/ic_menu_reserva"
+            android:title="@string/menu_reserva" />
+        <item
+            android:id="@+id/nav_estudiante"
+            android:icon="@drawable/ic_menu_estudiante"
+            android:title="@string/menu_estudiante" />
+    </group>
+</menu>
