@@ -16,7 +16,7 @@ class EstudianteActivity : AppCompatActivity() {
 
         val listaEstudiante = findViewById<ListView>(R.id.lst_listaEstudiantes)
 
-        rasc.listarEstudiantes(context,listaEstudiante)
+        rasc.listarEstudiantes(applicationContext,listaEstudiante)
 
     }
 }

@@ -1,6 +1,7 @@
 package upn.edu.pe.libraryapp.services.estudiante
 
 import android.content.Context
+import android.util.Log
 import android.widget.ListView
 import retrofit2.Call
 import retrofit2.Callback
@@ -19,6 +20,9 @@ class ResponseApiServiceEstudiante {
                 override fun onResponse(call: Call<List<Estudiante>>, response: Response<List<Estudiante>>) {
                     if(response.isSuccessful){
                         val rpta =response.body()!!
+                        rpta.forEach {
+                            Log.d(" ",it.nombres +" " +it.apellidos)
+                        }
                         val adap =AdaptadorEstudiante(context,rpta)
                         listView.adapter = adap
                     }
