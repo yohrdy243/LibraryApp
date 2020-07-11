@@ -9,7 +9,7 @@ object RetrofitEstudiante {
     val client = OkHttpClient.Builder().build()
 
     private val retrofit = Retrofit.Builder()
-        .baseUrl(ApiUtils.BASE_URL)
+        .baseUrl(ApiUtils.BASE_ESTUDIANTES)
         .addConverterFactory(GsonConverterFactory.create())
         .client(client)
         .build()

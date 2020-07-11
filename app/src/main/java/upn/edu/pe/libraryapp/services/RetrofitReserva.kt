@@ -10,7 +10,7 @@ object RetrofitReserva {
     val client = OkHttpClient.Builder().build()
 
     private val retrofit = Retrofit.Builder()
-        .baseUrl(ApiUtils.BASE_URL)
+        .baseUrl(ApiUtils.BASE_RESERVAS)
         .addConverterFactory(GsonConverterFactory.create())
         .client(client)
         .build()
