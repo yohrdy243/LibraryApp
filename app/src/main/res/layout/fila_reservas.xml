@@ -5,24 +5,38 @@
     android:layout_height="match_parent">
 
     <TextView
-        android:id="@+id/tv_librofk"
+        android:id="@+id/tv_reservaId"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="TextView" />
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"/>
+    <TextView
+        android:id="@+id/tv_libro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"/>
 
     <TextView
-        android:id="@+id/tv_estudiantefk"
+        android:id="@+id/tv_estudiante"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="TextView" />
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"/>
 
     <TextView
-        android:id="@+id/tv_fecha"
+        android:id="@+id/tv_fechaReserva"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_weight="1"
-        android:text="TextView" />
+        android:text="TextView"
+        android:textAlignment="center"
+        android:textColor="@android:color/black"/>
 
 </LinearLayout>

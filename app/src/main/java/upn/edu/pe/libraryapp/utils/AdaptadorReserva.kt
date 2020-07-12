@@ -15,13 +15,15 @@ class AdaptadorReserva (context: Context, private val datos: List<Reserva>): Arr
                 val inflater = LayoutInflater.from(context)
                 val vista =inflater.inflate(R.layout.fila_reservas,null,true)
 
-                val tv_librofk =vista.findViewById<TextView>(R.id.tv_librofk)
-                val tv_estudiantefk = vista.findViewById<TextView>(R.id.tv_estudiantefk)
-                val tv_fecha =vista.findViewById<TextView>(R.id.tv_fecha)
+                val tv_ReservaId = vista.findViewById<TextView>(R.id.tv_reservaId)
+                val tv_libro =vista.findViewById<TextView>(R.id.tv_libro)
+                val tv_estudiante = vista.findViewById<TextView>(R.id.tv_estudiante)
+                val tv_fecha =vista.findViewById<TextView>(R.id.tv_fechaReserva)
 
-                tv_librofk.text =datos.get(position).libro.nombreLibro
-                tv_estudiantefk.text =datos.get(position).estudiante.nombres+" "+datos.get(position).estudiante.apellidos
+                tv_libro.text =datos.get(position).libro.nombreLibro
+                tv_estudiante.text =datos.get(position).estudiante.nombres+" "+datos.get(position).estudiante.apellidos
                 tv_fecha.text =datos.get(position).fecha
+                tv_ReservaId.text = datos.get(position).idReserva.toString()
 
                 return vista
             }

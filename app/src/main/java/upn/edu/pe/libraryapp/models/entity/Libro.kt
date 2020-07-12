@@ -5,27 +5,27 @@ import com.google.gson.annotations.SerializedName
 
 class Libro {
 
-    @SerializedName("idLibro")
+    @SerializedName("idlibro")
     @Expose
     var idLibro =0
 
-    @SerializedName("nombreLibro")
+    @SerializedName("nombrelibro")
     @Expose
     var nombreLibro: String? = ""
 
-    @SerializedName("editorialLibro")
+    @SerializedName("editoriallibro")
     @Expose
     var editorialLibro: String? = ""
 
-    @SerializedName("categoriaLibro")
+    @SerializedName("categorialibro")
     @Expose
     var categoriaLibro: String? = ""
 
-    @SerializedName("ejemplarLibro")
+    @SerializedName("ejemplarlibro")
     @Expose
     var ejemplarLibro: String? = ""
 
-    @SerializedName("idiomaLibro")
+    @SerializedName("idiomalibro")
     @Expose
     var idiomaLibro: String? = ""
 

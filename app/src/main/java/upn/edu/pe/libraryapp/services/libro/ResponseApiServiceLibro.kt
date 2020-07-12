@@ -1,6 +1,7 @@
 package upn.edu.pe.libraryapp.services.libro
 
 import android.content.Context
+import android.util.Log
 import android.widget.ListView
 import android.widget.Toast
 import retrofit2.Call
@@ -44,6 +45,9 @@ class ResponseApiServiceLibro {
             override fun onResponse(call: Call<List<Libro>>, response: Response<List<Libro>>) {
                 if(response.isSuccessful){
                     val rpta =response.body()!!
+                    rpta.forEach {
+                        Log.d(" ",it.nombreLibro +" " +it.categoriaLibro)
+                    }
                     val adap = AdaptadorLibro(context,rpta)
                     listView.adapter = adap
                 }

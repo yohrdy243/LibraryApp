@@ -1,6 +1,7 @@
 package upn.edu.pe.libraryapp.services.reserva
 
 import android.content.Context
+import android.util.Log
 import android.widget.ListView
 import android.widget.Toast
 import retrofit2.Call
@@ -48,6 +49,9 @@ class ResponseApiServiceReserva {
                     if(response.isSuccessful){
                         val rpta =response.body()!!
                         val adap = AdaptadorReserva(context,rpta)
+                        rpta.forEach {
+                            Log.d("fecha",it.fecha.toString())
+                        }
                         listView.adapter = adap
                     }
                 }

@@ -15,6 +15,7 @@ class AdaptadorLibro (context:Context, private val datos: List<Libro>):ArrayAdap
             val inflater =LayoutInflater.from(context)
             val vista =inflater.inflate(R.layout.fila_libros,null,true)
 
+            val tv_idLibro = vista.findViewById<TextView>(R.id.tv_idLibro)
             val tv_nombreLibro =vista.findViewById<TextView>(R.id.tv_nombreLibro)
             val tv_editorialLibro = vista.findViewById<TextView>(R.id.tv_editorialLibro)
             val tv_categoriaLibro =vista.findViewById<TextView>(R.id.tv_categoriaLibro)
@@ -22,7 +23,7 @@ class AdaptadorLibro (context:Context, private val datos: List<Libro>):ArrayAdap
             tv_nombreLibro.text =datos.get(position).nombreLibro
             tv_editorialLibro.text =datos.get(position).editorialLibro
             tv_categoriaLibro.text =datos.get(position).categoriaLibro
-
+            tv_idLibro.text = datos.get(position).idLibro.toString()
             return vista
         }
 

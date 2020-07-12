@@ -8,15 +8,15 @@ class Reserva {
     @Expose
     var idReserva = 0;
 
-    @SerializedName("libro_fk")
+    @SerializedName("libro")
     @Expose
     var libro: Libro = Libro()
 
-    @SerializedName("estudiante_fk")
+    @SerializedName("estudiante")
     @Expose
     var estudiante: Estudiante = Estudiante()
 
-    @SerializedName("fecha")
+    @SerializedName("createAt")
     @Expose
     var fecha: String? = ""
 
