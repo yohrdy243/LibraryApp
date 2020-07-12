@@ -1,9 +1,8 @@
 package upn.edu.pe.libraryapp.services.reserva
 
 import retrofit2.Call
-import retrofit2.http.Body
-import retrofit2.http.GET
-import retrofit2.http.POST
+import retrofit2.http.*
+import upn.edu.pe.libraryapp.models.entity.Libro
 import upn.edu.pe.libraryapp.models.entity.Reserva
 
 interface ApiServiceReserva {
@@ -13,4 +12,9 @@ interface ApiServiceReserva {
     @GET(".")
     fun listarReservas(): Call<List<Reserva>>
 
+    @PUT("/reservas/{idReserva}")
+    fun editarReserva(@Body libro: Libro?, @Path("idReserva") id: Int):Call<Reserva>
+
+    @DELETE("/reservas/{idReserva}")
+    fun eliminarLibro(@Path("idReserva") id: Int):Call<Reserva>
 }

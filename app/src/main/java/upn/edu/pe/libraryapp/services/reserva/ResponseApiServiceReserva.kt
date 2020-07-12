@@ -11,8 +11,10 @@ import upn.edu.pe.libraryapp.models.entity.Estudiante
 import upn.edu.pe.libraryapp.models.entity.Libro
 
 import upn.edu.pe.libraryapp.models.entity.Reserva
+import upn.edu.pe.libraryapp.services.RetrofitLibro
 
 import upn.edu.pe.libraryapp.services.RetrofitReserva
+import upn.edu.pe.libraryapp.services.libro.ApiServiceLibro
 
 import upn.edu.pe.libraryapp.utils.AdaptadorReserva
 
@@ -39,7 +41,6 @@ class ResponseApiServiceReserva {
                 }
             })
         }
-
         fun listarReserva(context: Context, listView: ListView){
             val r = RetrofitReserva.buildService(ApiServiceReserva::class.java)
             val call = r.listarReservas()
@@ -88,5 +89,25 @@ class ResponseApiServiceReserva {
                 }
             })
             return reserva
+        }
+
+        fun eliminarReserva(idReserva: Int, toast: Toast) {
+            val r = RetrofitReserva.buildService(ApiServiceReserva::class.java)
+            val call = r.eliminarLibro(idReserva)
+            var mensaje: String = ""
+            call!!.enqueue(object : Callback<Reserva> {
+                override fun onResponse(call: Call<Reserva>, response: Response<Reserva>) {
+                    if(response.isSuccessful) mensaje = "ELIMINADO"
+                    else mensaje = "REINTENTE NUEVAMENTE"
+                    toast.setText(mensaje)
+                    toast.show()
+                }
+
+                override fun onFailure(call: Call<Reserva>, t: Throwable) {
+                    mensaje = "REINTENTE NUEVAMENTE"
+                    toast.setText(mensaje)
+                    toast.show()
+                }
+            })
         }
 }
