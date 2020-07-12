@@ -62,4 +62,31 @@ class ResponseApiServiceReserva {
                 }
             })
         }
+        fun buscarReserva(context: Context,idReserva: Int): Reserva{
+            val r = RetrofitReserva.buildService(ApiServiceReserva::class.java)
+            val call = r.listarReservas()
+            val reserva:Reserva = Reserva()
+            call!!.enqueue(object :Callback<List<Reserva>> {
+                override fun onResponse(call: Call<List<Reserva>>, response: Response<List<Reserva>>) {
+                    if(response.isSuccessful){
+                        val rpta =response.body()!!
+                        val adap = AdaptadorReserva(context,rpta)
+                        rpta.forEach {
+                            if(it.idReserva == idReserva){
+                                reserva.estudiante=it.estudiante
+                                reserva.libro=it.libro
+                                reserva.fecha=it.fecha
+                            }
+                        }
+
+                    }
+                }
+
+                override fun onFailure(call: Call<List<Reserva>>, t: Throwable) {
+                    println(t.toString())
+
+                }
+            })
+            return reserva
+        }
 }

@@ -27,4 +27,7 @@ class Reserva {
         this.fecha = fecha
     }
 
+    constructor()
+
+
 }

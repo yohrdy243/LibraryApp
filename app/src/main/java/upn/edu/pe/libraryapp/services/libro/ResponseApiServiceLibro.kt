@@ -59,4 +59,33 @@ class ResponseApiServiceLibro {
             }
         })
     }
+    fun buscarLibros(context: Context,idLibro: Int): Libro{
+        val r = RetrofitLibro.buildService(ApiServiceLibro::class.java)
+        val call = r.listarLibros()
+        val libro:Libro = Libro()
+
+        call!!.enqueue(object :Callback<List<Libro>> {
+            override fun onResponse(call: Call<List<Libro>>, response: Response<List<Libro>>) {
+                if(response.isSuccessful){
+                    val rpta =response.body()!!
+                    rpta.forEach {
+                        if(it.idLibro == idLibro){
+                            libro.categoriaLibro=it.categoriaLibro
+                            libro.editorialLibro= it.editorialLibro
+                            libro.ejemplarLibro=it.ejemplarLibro
+                            libro.nombreLibro=it.nombreLibro
+                            libro.idiomaLibro=it.idiomaLibro
+                        }
+                    }
+
+                }
+            }
+
+            override fun onFailure(call: Call<List<Libro>>, t: Throwable) {
+                println(t.toString())
+
+            }
+        })
+        return libro
+    }
 }

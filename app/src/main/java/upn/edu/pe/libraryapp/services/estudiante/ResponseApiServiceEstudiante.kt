@@ -34,6 +34,32 @@ class ResponseApiServiceEstudiante {
                 }
             })
         }
+        fun buscarEstudiante(context: Context,idEstudiante: Int): Estudiante {
+            val r = RetrofitEstudiante.buildService(ApiServiceEstudiante::class.java)
+            val call = r.listarEstudiantes()
+            val estudiante: Estudiante = Estudiante()
+            call.enqueue(object :Callback<List<Estudiante>> {
+                override fun onResponse(call: Call<List<Estudiante>>, response: Response<List<Estudiante>>) {
+                    if(response.isSuccessful){
+                        val rpta =response.body()!!
+                        rpta.forEach {
+                            if(it.id == idEstudiante){
+                                estudiante.nombres=it.nombres
+                                estudiante.apellidos=it.apellidos
+                                estudiante.carrera=it.carrera
+                                estudiante.email=it.email
+                            }
+                        }
+                    }
+                }
+
+                override fun onFailure(call: Call<List<Estudiante>>, t: Throwable) {
+                    println(t.toString())
+
+                }
+            })
+            return estudiante
+        }
         fun grabaEstudiante(id: Int, apellidos:String?,nombre:String?, carrera:String?, email:String?, toast: Toast) {
 
             val e = Estudiante(0, apellidos, nombre, carrera, email)
