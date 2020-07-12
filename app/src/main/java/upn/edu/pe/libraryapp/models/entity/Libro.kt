@@ -7,7 +7,7 @@ class Libro {
 
     @SerializedName("idlibro")
     @Expose
-    var idLibro =0
+    var idLibro = 0
 
     @SerializedName("nombrelibro")
     @Expose

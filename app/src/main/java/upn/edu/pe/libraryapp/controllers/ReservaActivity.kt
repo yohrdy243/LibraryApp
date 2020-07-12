@@ -21,6 +21,7 @@ class ReservaActivity : AppCompatActivity() {
 
         rasc.listarReserva(applicationContext,listaReserva)
         btnNuevaReserva.setOnClickListener {
+            finish()
             val intent = Intent(applicationContext,NewReservaActivity::class.java)
             startActivity(intent)
         }

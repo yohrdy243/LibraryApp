@@ -4,7 +4,7 @@ import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
 class Reserva {
-    @SerializedName("idReserva")
+    @SerializedName("idreserva")
     @Expose
     var idReserva = 0;
 

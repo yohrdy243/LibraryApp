@@ -1,14 +1,13 @@
 package upn.edu.pe.libraryapp.controllers
 
 import android.content.Context
+import android.content.Intent
 import android.os.Bundle
-import android.widget.Button
-import android.widget.EditText
-import android.widget.ListView
-import android.widget.TextView
+import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import upn.edu.pe.libraryapp.R
 import upn.edu.pe.libraryapp.services.estudiante.ResponseApiServiceEstudiante
+
 
 class NewEstudianteActivity : AppCompatActivity() {
     var rasc = ResponseApiServiceEstudiante()
@@ -23,9 +22,13 @@ class NewEstudianteActivity : AppCompatActivity() {
         val correo = findViewById<EditText>(R.id.correo)
 
         val btnGuardarEstudiante = findViewById<Button>(R.id.btn_guardarEstudiante)
+        val toast = Toast.makeText(applicationContext,"-",Toast.LENGTH_SHORT)
 
         btnGuardarEstudiante.setOnClickListener {
-            
+            rasc.grabaEstudiante(0,apellidos.text.toString(),nombres.text.toString(),carrera.text.toString(),correo.text.toString(),toast)
+            finish()
+            val intent = Intent(context, EstudianteActivity::class.java)
+            startActivity(intent)
         }
     }
 }

@@ -23,8 +23,13 @@ class EstudianteActivity : AppCompatActivity() {
         rasc.listarEstudiantes(applicationContext,listaEstudiante)
 
         btnNuevoEstudiante.setOnClickListener {
+            finish()
             val intent = Intent(applicationContext,NewEstudianteActivity::class.java)
             startActivity(intent)
+
         }
+
     }
+
+
 }

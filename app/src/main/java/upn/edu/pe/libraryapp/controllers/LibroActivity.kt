@@ -22,6 +22,7 @@ class LibroActivity: AppCompatActivity() {
         rasc.listarLibros(applicationContext,listaLibros)
 
         btnNuevoLibro.setOnClickListener {
+            finish()
             val intent = Intent(applicationContext,NewLibroActivity::class.java)
             startActivity(intent)
         }
