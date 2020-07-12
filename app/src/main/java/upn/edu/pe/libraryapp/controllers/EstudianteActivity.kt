@@ -19,6 +19,7 @@ class EstudianteActivity : AppCompatActivity() {
 
         val listaEstudiante = findViewById<ListView>(R.id.lst_listaEstudiantes)
         val btnNuevoEstudiante = findViewById<FloatingActionButton>(R.id.btn_nuevoEstudiante)
+        val btnEditarEstudiante = findViewById<FloatingActionButton>(R.id.btn_editEstudiante)
 
         rasc.listarEstudiantes(applicationContext,listaEstudiante)
 
@@ -26,7 +27,11 @@ class EstudianteActivity : AppCompatActivity() {
             finish()
             val intent = Intent(applicationContext,NewEstudianteActivity::class.java)
             startActivity(intent)
+        }
 
+        btnEditarEstudiante.setOnClickListener {
+            val intent = Intent(applicationContext,EditEstudianteActiviy::class.java)
+            startActivity(intent)
         }
 
     }

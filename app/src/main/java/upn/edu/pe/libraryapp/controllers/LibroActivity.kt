@@ -18,12 +18,18 @@ class LibroActivity: AppCompatActivity() {
 
         val listaLibros = findViewById<ListView>(R.id.lst_listaLibro)
         val btnNuevoLibro = findViewById<FloatingActionButton>(R.id.btn_nuevoLibro)
+        val btnEditarLibro = findViewById<FloatingActionButton>(R.id.btn_editLibro)
 
         rasc.listarLibros(applicationContext,listaLibros)
 
         btnNuevoLibro.setOnClickListener {
             finish()
             val intent = Intent(applicationContext,NewLibroActivity::class.java)
+            startActivity(intent)
+        }
+
+        btnEditarLibro.setOnClickListener {
+            val intent = Intent(applicationContext,EditLibroActiviy::class.java)
             startActivity(intent)
         }
     }

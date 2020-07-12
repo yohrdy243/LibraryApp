@@ -18,11 +18,16 @@ class ReservaActivity : AppCompatActivity() {
 
         val listaReserva = findViewById<ListView>(R.id.lst_listaReserva)
         val btnNuevaReserva = findViewById<FloatingActionButton>(R.id.btn_nuevaReserva)
+        val btnEditReserva = findViewById<FloatingActionButton>(R.id.btn_editReserva)
 
         rasc.listarReserva(applicationContext,listaReserva)
         btnNuevaReserva.setOnClickListener {
             finish()
             val intent = Intent(applicationContext,NewReservaActivity::class.java)
+            startActivity(intent)
+        }
+        btnEditReserva.setOnClickListener {
+            val intent = Intent(applicationContext,EditReservaActiviy::class.java)
             startActivity(intent)
         }
     }

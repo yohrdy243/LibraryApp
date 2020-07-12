@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:orientation="vertical"
+            android:layout_marginRight="30dp"
+            android:layout_marginLeft="30dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="ID Libro"
+                android:textColor="@android:color/black"
+                android:textSize="15dp"
+                android:layout_marginTop="50dp">
+            </TextView>
+            <EditText
+                android:id="@+id/edit_IDLibro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </EditText>
+            <Button
+                android:id="@+id/btn_editar_buscarLibro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="30dp"
+                android:text="Buscar Libro"
+                android:textAllCaps="false"
+                android:background="@android:color/holo_blue_bright">
+            </Button>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Nombre Libro"
+                android:textColor="@android:color/black"
+                android:textSize="15dp"
+                android:layout_marginTop="50dp">
+            </TextView>
+            <EditText
+                android:id="@+id/edit_nombreLibro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </EditText>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Categoria"
+                android:textColor="@android:color/black"
+                android:textSize="15dp"
+                android:layout_marginTop="10dp">
+            </TextView>
+            <EditText
+                android:id="@+id/edit_categoriaLibro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </EditText>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Ejemplar"
+                android:textColor="@android:color/black"
+                android:textSize="15dp"
+                android:layout_marginTop="10dp">
+            </TextView>
+            <EditText
+                android:id="@+id/edit_ejemplarLibro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </EditText>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Idioma"
+                android:textColor="@android:color/black"
+                android:textSize="15dp"
+                android:layout_marginTop="10dp">
+            </TextView>
+            <EditText
+                android:id="@+id/edit_idiomaLibro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </EditText>
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Editorial"
+                android:textColor="@android:color/black"
+                android:textSize="15dp"
+                android:layout_marginTop="10dp">
+            </TextView>
+            <EditText
+                android:id="@+id/edit_editorialLibro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content">
+            </EditText>
+            <Button
+                android:id="@+id/btn_editarLibro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="50dp"
+                android:text="Editar Libro"
+                android:textAllCaps="false"
+                android:background="@android:color/holo_green_dark">
+            </Button>
+            <Button
+                android:id="@+id/btn_eliminarLibro"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:text="Eliminar Libro"
+                android:textAllCaps="false"
+                android:background="@android:color/holo_red_dark">
+            </Button>
+        </LinearLayout>
+    </ScrollView>
+
+</LinearLayout>
