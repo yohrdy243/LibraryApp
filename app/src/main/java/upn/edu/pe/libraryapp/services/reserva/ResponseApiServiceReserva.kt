@@ -71,8 +71,8 @@ class ResponseApiServiceReserva {
             call!!.enqueue(object :Callback<Reserva> {
                 override fun onResponse(call: Call<Reserva>, response: Response<Reserva>) {
                     if(response.isSuccessful){
-                        libro.setText(response.body()!!.estudiante.id.toString())
-                        estudiante.setText(response.body()!!.libro.idLibro.toString())
+                        estudiante.setText(response.body()!!.estudiante.id.toString())
+                        libro.setText(response.body()!!.libro.idLibro.toString())
                         fecha.setText(response.body()!!.fecha.toString())
                     }
                 }
@@ -103,4 +103,24 @@ class ResponseApiServiceReserva {
                 }
             })
         }
+
+    fun editarReserva(reserva: Reserva, toast: Toast) {
+        val r = RetrofitReserva.buildService(ApiServiceReserva::class.java)
+        val call = r.editarReserva(reserva,reserva.idReserva)
+        var mensaje: String = ""
+        call!!.enqueue(object : Callback<Reserva> {
+            override fun onResponse(call: Call<Reserva>, response: Response<Reserva>) {
+                if(response.isSuccessful) mensaje = "EDITADO"
+                else mensaje = "REINTENTE NUEVAMENTE"
+                toast.setText(mensaje)
+                toast.show()
+            }
+
+            override fun onFailure(call: Call<Reserva>, t: Throwable) {
+                mensaje = "REINTENTE NUEVAMENTE"
+                toast.setText(mensaje)
+                toast.show()
+            }
+        })
+    }
 }

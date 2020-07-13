@@ -10,6 +10,7 @@ import android.widget.ListView
 import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.floatingactionbutton.FloatingActionButton
+import kotlinx.android.synthetic.main.form_estudiante.*
 import upn.edu.pe.libraryapp.R
 import upn.edu.pe.libraryapp.models.entity.Estudiante
 import upn.edu.pe.libraryapp.services.estudiante.ResponseApiServiceEstudiante
@@ -25,6 +26,7 @@ class EditEstudianteActiviy : AppCompatActivity() {
         val idEstudiante = findViewById<EditText>(R.id.edit_idEstudiante)
         val btnBuscarEstudiante = findViewById<Button>(R.id.btn_editar_buscarEstudiante)
         val btnEliminarEstudiante = findViewById<Button>(R.id.btn_eliminarEstudiante)
+        val btnEditarEstudiante = findViewById<Button>(R.id.btn_editarEstudiante)
 
         val toast = Toast.makeText(applicationContext,"-", Toast.LENGTH_SHORT)
 
@@ -42,6 +44,12 @@ class EditEstudianteActiviy : AppCompatActivity() {
             finish()
             rasc.eliminarEstudiante(idEstudiante.text.toString().toInt(),toast)
         }
+        btnEditarEstudiante.setOnClickListener {
+            finish()
+            val estudiante:Estudiante = Estudiante(idEstudiante.text.toString().toInt(),apellidoEstudiante.text.toString(),nombreEstudiante.text.toString(),carreraEstudiante.text.toString(),emailEstudiante.text.toString())
+            rasc.editarEstudiante(estudiante,toast)
+        }
+
     }
 }
 

@@ -6,12 +6,14 @@ import android.os.Bundle
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import upn.edu.pe.libraryapp.R
+import upn.edu.pe.libraryapp.models.entity.Usuario
 import upn.edu.pe.libraryapp.services.estudiante.ResponseApiServiceEstudiante
 
 
 class NewEstudianteActivity : AppCompatActivity() {
     var rasc = ResponseApiServiceEstudiante()
     var context : Context = this
+    private val user: Usuario = Usuario("","")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.form_estudiante)
@@ -22,6 +24,7 @@ class NewEstudianteActivity : AppCompatActivity() {
         val correo = findViewById<EditText>(R.id.correo)
 
         val btnGuardarEstudiante = findViewById<Button>(R.id.btn_guardarEstudiante)
+
         val toast = Toast.makeText(applicationContext,"-",Toast.LENGTH_SHORT)
 
         btnGuardarEstudiante.setOnClickListener {
@@ -31,4 +34,6 @@ class NewEstudianteActivity : AppCompatActivity() {
             startActivity(intent)
         }
     }
+
+
 }

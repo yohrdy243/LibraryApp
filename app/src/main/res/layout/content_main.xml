@@ -61,8 +61,10 @@
                 android:layout_width="294dp"
                 android:layout_height="45dp"
                 android:layout_marginLeft="-80dp"
-                android:layout_marginTop="555dp">
+                android:layout_marginTop="555dp"
+                android:password="true">
             </EditText>
+
             <Button
                 android:id="@+id/btn_ingresar"
                 android:layout_width="130dp"

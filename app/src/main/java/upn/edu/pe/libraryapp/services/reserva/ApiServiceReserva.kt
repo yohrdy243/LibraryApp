@@ -16,8 +16,8 @@ interface ApiServiceReserva {
     fun buscarReserva(@Path("idReserva") idReserva: Int): Call<Reserva>
 
     @PUT("{idReserva}")
-    fun editarReserva(@Body libro: Libro?, @Path("idReserva") id: Int):Call<Reserva>
+    fun editarReserva(@Body reserva: Reserva?, @Path("idReserva") id: Int): Call<Reserva>
 
     @DELETE("{idReserva}")
-    fun eliminarLibro(@Path("idReserva") id: Int):Call<Reserva>
+    fun eliminarLibro(@Path("idReserva") id: Int): Call<Reserva>
 }

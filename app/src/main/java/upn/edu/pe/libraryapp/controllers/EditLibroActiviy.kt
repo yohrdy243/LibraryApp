@@ -10,6 +10,8 @@ import android.widget.Toast
 import androidx.appcompat.app.AppCompatActivity
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import upn.edu.pe.libraryapp.R
+import upn.edu.pe.libraryapp.models.entity.Libro
+import upn.edu.pe.libraryapp.models.entity.Usuario
 import upn.edu.pe.libraryapp.services.estudiante.ResponseApiServiceEstudiante
 import upn.edu.pe.libraryapp.services.libro.ResponseApiServiceLibro
 
@@ -22,6 +24,7 @@ class EditLibroActiviy : AppCompatActivity() {
 
         val btnBuscarLibro = findViewById<Button>(R.id.btn_editar_buscarLibro)
         val btnEliminarLibro = findViewById<Button>(R.id.btn_eliminarLibro)
+        val btnEditarLibro = findViewById<Button>(R.id.btn_editarLibro)
 
         val toast = Toast.makeText(applicationContext,"-", Toast.LENGTH_SHORT)
 
@@ -38,6 +41,11 @@ class EditLibroActiviy : AppCompatActivity() {
         btnEliminarLibro.setOnClickListener {
             finish()
             rasc.eliminarLibro(idLibro.text.toString().toInt(),toast)
+        }
+        btnEditarLibro.setOnClickListener {
+            finish()
+            val libro: Libro = Libro(idLibro.text.toString().toInt(),nombreLibro.text.toString(),editorialLibro.text.toString(),categoriaLibro.text.toString(),ejemplarLibro.text.toString(),idiomaLibro.text.toString())
+            rasc.editarLibro(libro,toast)
         }
     }
 

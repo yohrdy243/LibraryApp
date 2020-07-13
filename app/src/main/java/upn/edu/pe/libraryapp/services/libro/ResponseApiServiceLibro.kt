@@ -84,6 +84,25 @@ class ResponseApiServiceLibro {
         })
 
     }
+    fun editarLibro(libro: Libro, toast: Toast) {
+        val r = RetrofitLibro.buildService(ApiServiceLibro::class.java)
+        val call = r.editarLibro(libro,libro.idLibro.toInt())
+        var mensaje: String = ""
+        call!!.enqueue(object : Callback<Libro> {
+            override fun onResponse(call: Call<Libro>, response: Response<Libro>) {
+                if (response.isSuccessful) mensaje = "EDITADO"
+                else mensaje = "REINTENTE NUEVAMENTE"
+                toast.setText(mensaje)
+                toast.show()
+            }
+
+            override fun onFailure(call: Call<Libro>, t: Throwable) {
+                mensaje = "REINTENTE NUEVAMENTE"
+                toast.setText(mensaje)
+                toast.show()
+            }
+        })
+    }
     fun eliminarLibro(idLibro: Int, toast: Toast) {
         val r = RetrofitLibro.buildService(ApiServiceLibro::class.java)
         val call = r.eliminarLibro(idLibro)

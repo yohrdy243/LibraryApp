@@ -17,7 +17,7 @@ interface ApiServiceLibro {
     fun buscarLibro(@Path("idLibro") idLibro: Int): Call<Libro>
 
     @PUT("{idLibro}")
-    fun editarLibro(@Body libro: Libro?,@Path("idLibro") id: Int):Call<Libro>
+    fun editarLibro(@Body libro: Libro?,@Path("idLibro") id: Int): Call<Libro>
 
     @DELETE("{idLibro}")
     fun eliminarLibro(@Path("idLibro") id: Int): Call<Libro>

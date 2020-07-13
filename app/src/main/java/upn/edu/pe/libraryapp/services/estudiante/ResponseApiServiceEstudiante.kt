@@ -81,6 +81,25 @@ class ResponseApiServiceEstudiante {
             }
         })
     }
+    fun editarEstudiante(estudiante: Estudiante, toast: Toast) {
+        val r = RetrofitEstudiante.buildService(ApiServiceEstudiante::class.java)
+        val call = r.editarEstudiante(estudiante,estudiante.id)
+        var mensaje: String = ""
+        call!!.enqueue(object : Callback<Estudiante> {
+            override fun onResponse(call: Call<Estudiante>, response: Response<Estudiante>) {
+                if (response.isSuccessful) mensaje = "EDITADO"
+                else mensaje = "REINTENTE NUEVAMENTE"
+                toast.setText(mensaje)
+                toast.show()
+            }
+
+            override fun onFailure(call: Call<Estudiante>, t: Throwable) {
+                mensaje = "REINTENTE NUEVAMENTE"
+                toast.setText(mensaje)
+                toast.show()
+            }
+        })
+    }
 
     fun eliminarEstudiante(id: Int, toast: Toast) {
         val r = RetrofitEstudiante.buildService(ApiServiceEstudiante::class.java)
