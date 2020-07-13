@@ -12,9 +12,12 @@ interface ApiServiceEstudiante {
     @GET(".")
     fun listarEstudiantes(): Call<List<Estudiante>>
 
+    @GET("{id}")
+    fun buscarEstudiante(@Path("id") id: Int): Call<Estudiante>
+
     @PUT("{id}")
     fun editarEstudiante(@Body estudiante: Estudiante?, @Path("id") id: Int): Call<Estudiante>
 
-    @DELETE("/estudiante/{id}")
+    @DELETE("{id}")
     fun eliminarEstudiante(@Path("id") id: Int): Call<Estudiante>
 }

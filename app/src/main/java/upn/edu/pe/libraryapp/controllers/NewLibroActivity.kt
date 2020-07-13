@@ -20,14 +20,14 @@ class NewLibroActivity : AppCompatActivity() {
         val nombreLibro = findViewById<TextView>(R.id.nombreLibro)
         val editorialLibro = findViewById<TextView>(R.id.editorialLibro)
         val idiomaLibro = findViewById<TextView>(R.id.idiomaLibro)
-        val  categoriaLibro = findViewById<TextView>(R.id.categoriaLibro)
+        val categoriaLibro = findViewById<TextView>(R.id.categoriaLibro)
         val ejemplarLibro = findViewById<TextView>(R.id.ejemplarLibro)
         val btnGrabarLibro = findViewById<Button>(R.id.btn_guardarLibro)
 
         val toast = Toast.makeText(applicationContext,"-", Toast.LENGTH_SHORT)
 
         btnGrabarLibro.setOnClickListener {
-            rasc.grabaLibro(0,nombreLibro.text.toString(),editorialLibro.text.toString(),idiomaLibro.text.toString(),categoriaLibro.text.toString(),ejemplarLibro.text.toString(),toast)
+            rasc.grabaLibro(0,nombreLibro.text.toString(),editorialLibro.text.toString(),categoriaLibro.text.toString(),ejemplarLibro.text.toString(),idiomaLibro.text.toString(),toast)
             finish()
             val intent = Intent(context, LibroActivity::class.java)
             startActivity(intent)

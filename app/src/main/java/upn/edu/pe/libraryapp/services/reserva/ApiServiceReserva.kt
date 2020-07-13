@@ -12,9 +12,12 @@ interface ApiServiceReserva {
     @GET(".")
     fun listarReservas(): Call<List<Reserva>>
 
-    @PUT("/reservas/{idReserva}")
+    @GET("{idReserva}")
+    fun buscarReserva(@Path("idReserva") idReserva: Int): Call<Reserva>
+
+    @PUT("{idReserva}")
     fun editarReserva(@Body libro: Libro?, @Path("idReserva") id: Int):Call<Reserva>
 
-    @DELETE("/reservas/{idReserva}")
+    @DELETE("{idReserva}")
     fun eliminarLibro(@Path("idReserva") id: Int):Call<Reserva>
 }

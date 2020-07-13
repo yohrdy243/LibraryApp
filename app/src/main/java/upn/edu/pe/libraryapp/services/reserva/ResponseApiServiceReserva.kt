@@ -2,6 +2,7 @@ package upn.edu.pe.libraryapp.services.reserva
 
 import android.content.Context
 import android.util.Log
+import android.widget.EditText
 import android.widget.ListView
 import android.widget.Toast
 import retrofit2.Call
@@ -63,32 +64,24 @@ class ResponseApiServiceReserva {
                 }
             })
         }
-        fun buscarReserva(context: Context,idReserva: Int): Reserva{
+        fun buscarReserva(idReserva: Int,libro:EditText, estudiante: EditText,fecha: EditText){
             val r = RetrofitReserva.buildService(ApiServiceReserva::class.java)
-            val call = r.listarReservas()
-            val reserva:Reserva = Reserva()
-            call!!.enqueue(object :Callback<List<Reserva>> {
-                override fun onResponse(call: Call<List<Reserva>>, response: Response<List<Reserva>>) {
-                    if(response.isSuccessful){
-                        val rpta =response.body()!!
-                        val adap = AdaptadorReserva(context,rpta)
-                        rpta.forEach {
-                            if(it.idReserva == idReserva){
-                                reserva.estudiante=it.estudiante
-                                reserva.libro=it.libro
-                                reserva.fecha=it.fecha
-                            }
-                        }
+            val call = r.buscarReserva(idReserva)
 
+            call!!.enqueue(object :Callback<Reserva> {
+                override fun onResponse(call: Call<Reserva>, response: Response<Reserva>) {
+                    if(response.isSuccessful){
+                        libro.setText(response.body()!!.estudiante.id.toString())
+                        estudiante.setText(response.body()!!.libro.idLibro.toString())
+                        fecha.setText(response.body()!!.fecha.toString())
                     }
                 }
-
-                override fun onFailure(call: Call<List<Reserva>>, t: Throwable) {
+                override fun onFailure(call: Call<Reserva>, t: Throwable) {
                     println(t.toString())
 
                 }
             })
-            return reserva
+
         }
 
         fun eliminarReserva(idReserva: Int, toast: Toast) {

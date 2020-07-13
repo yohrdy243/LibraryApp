@@ -29,8 +29,7 @@ class Libro {
     @Expose
     var idiomaLibro: String? = ""
 
-    constructor(idLibro: Int, nombreLibro: String?, editorialLibro: String?,
-                categoriaLibro: String?, ejemplarLibro: String?,idiomaLibro:String?){
+    constructor(idLibro: Int, nombreLibro: String?, editorialLibro: String?, categoriaLibro: String?, ejemplarLibro: String?,idiomaLibro:String?){
         this.idLibro=idLibro
         this.nombreLibro=nombreLibro
         this.editorialLibro=editorialLibro

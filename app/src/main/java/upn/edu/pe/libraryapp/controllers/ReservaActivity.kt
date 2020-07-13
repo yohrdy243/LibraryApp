@@ -27,6 +27,7 @@ class ReservaActivity : AppCompatActivity() {
             startActivity(intent)
         }
         btnEditReserva.setOnClickListener {
+            finish()
             val intent = Intent(applicationContext,EditReservaActiviy::class.java)
             startActivity(intent)
         }

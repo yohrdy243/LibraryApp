@@ -29,6 +29,7 @@ class LibroActivity: AppCompatActivity() {
         }
 
         btnEditarLibro.setOnClickListener {
+            finish()
             val intent = Intent(applicationContext,EditLibroActiviy::class.java)
             startActivity(intent)
         }

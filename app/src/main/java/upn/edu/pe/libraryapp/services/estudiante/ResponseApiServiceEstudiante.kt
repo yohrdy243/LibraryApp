@@ -2,11 +2,13 @@ package upn.edu.pe.libraryapp.services.estudiante
 
 import android.content.Context
 import android.util.Log
+import android.widget.EditText
 import android.widget.ListView
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
 import android.widget.Toast
+import com.google.gson.Gson
 import upn.edu.pe.libraryapp.models.entity.Estudiante
 import upn.edu.pe.libraryapp.services.RetrofitEstudiante
 import upn.edu.pe.libraryapp.utils.AdaptadorEstudiante
@@ -17,10 +19,7 @@ class ResponseApiServiceEstudiante {
         val call = r.listarEstudiantes()
 
         call.enqueue(object : Callback<List<Estudiante>> {
-            override fun onResponse(
-                call: Call<List<Estudiante>>,
-                response: Response<List<Estudiante>>
-            ) {
+            override fun onResponse(call: Call<List<Estudiante>>, response: Response<List<Estudiante>>) {
                 if (response.isSuccessful) {
                     val rpta = response.body()!!
                     rpta.forEach {
@@ -38,34 +37,26 @@ class ResponseApiServiceEstudiante {
         })
     }
 
-    fun buscarEstudiante(context: Int, idEstudiante: Int): Estudiante {
+    fun buscarEstudiante(idEstudiante: Int,nombre: EditText,apellidos: EditText,carrera: EditText,email: EditText) {
         val r = RetrofitEstudiante.buildService(ApiServiceEstudiante::class.java)
-        val call = r.listarEstudiantes()
-        val estudiante: Estudiante = Estudiante()
-        call.enqueue(object : Callback<List<Estudiante>> {
-            override fun onResponse(
-                call: Call<List<Estudiante>>,
-                response: Response<List<Estudiante>>
-            ) {
+        val call = r.buscarEstudiante(idEstudiante)
+
+
+        call!!.enqueue(object : Callback<Estudiante> {
+            override fun onResponse(call: Call<Estudiante>, response: Response<Estudiante>)  {
                 if (response.isSuccessful) {
-                    val rpta = response.body()!!
-                    rpta.forEach {
-                        if (it.id == idEstudiante) {
-                            estudiante.nombres = it.nombres
-                            estudiante.apellidos = it.apellidos
-                            estudiante.carrera = it.carrera
-                            estudiante.email = it.email
-                        }
-                    }
+                    nombre.setText(response.body()!!.nombres.toString())
+                    apellidos.setText(response.body()!!.apellidos.toString())
+                    carrera.setText(response.body()!!.carrera.toString())
+                    email.setText(response.body()!!.email.toString())
                 }
             }
 
-            override fun onFailure(call: Call<List<Estudiante>>, t: Throwable) {
+            override fun onFailure(call: Call<Estudiante>, t: Throwable) {
                 println(t.toString())
-
             }
         })
-        return estudiante
+
     }
 
     fun grabaEstudiante(id: Int, apellidos: String?, nombre: String?, carrera: String?, email: String?, toast: Toast) {

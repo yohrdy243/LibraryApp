@@ -2,6 +2,7 @@ package upn.edu.pe.libraryapp.services.libro
 
 import android.content.Context
 import android.util.Log
+import android.widget.EditText
 import android.widget.ListView
 import android.widget.Toast
 import retrofit2.Call
@@ -16,9 +17,9 @@ import upn.edu.pe.libraryapp.services.estudiante.ApiServiceEstudiante
 import upn.edu.pe.libraryapp.utils.AdaptadorLibro
 
 class ResponseApiServiceLibro {
-    fun grabaLibro(idLibro: Int, nombreLibro:String?,editorialLibro:String?,idiomaLibro:String?, categoriaLibro:String?, ejemplarLibro:String?, toast: Toast) {
+    fun grabaLibro(idLibro: Int, nombreLibro:String?,editorialLibro:String?, categoriaLibro:String?, ejemplarLibro:String?,idiomaLibro:String?, toast: Toast) {
 
-        val l = Libro(0,nombreLibro,editorialLibro,idiomaLibro,categoriaLibro,ejemplarLibro)
+        val l = Libro(0,nombreLibro,editorialLibro, categoriaLibro, ejemplarLibro, idiomaLibro)
         val r = RetrofitLibro.buildService(ApiServiceLibro::class.java)
         val call =r.grabaLibro(l)
         var mensaje: String =""
@@ -60,34 +61,28 @@ class ResponseApiServiceLibro {
             }
         })
     }
-    fun buscarLibros(context: Context,idLibro: Int): Libro{
+    fun buscarLibros(idLibro: Int,nombreLibro:EditText,editorialLibro:EditText,categoriaLibro:EditText,ejemplarLibro:EditText,idiomaLibro:EditText ){
         val r = RetrofitLibro.buildService(ApiServiceLibro::class.java)
-        val call = r.listarLibros()
-        val libro:Libro = Libro()
+        val call = r.buscarLibro(idLibro)
 
-        call!!.enqueue(object :Callback<List<Libro>> {
-            override fun onResponse(call: Call<List<Libro>>, response: Response<List<Libro>>) {
+        call!!.enqueue(object :Callback<Libro> {
+            override fun onResponse(call: Call<Libro>, response: Response<Libro>) {
                 if(response.isSuccessful){
-                    val rpta =response.body()!!
-                    rpta.forEach {
-                        if(it.idLibro == idLibro){
-                            libro.categoriaLibro=it.categoriaLibro
-                            libro.editorialLibro= it.editorialLibro
-                            libro.ejemplarLibro=it.ejemplarLibro
-                            libro.nombreLibro=it.nombreLibro
-                            libro.idiomaLibro=it.idiomaLibro
-                        }
-                    }
-
+                    nombreLibro.setText(response.body()!!.nombreLibro.toString())
+                    editorialLibro.setText(response.body()!!.editorialLibro.toString())
+                    categoriaLibro.setText(response.body()!!.categoriaLibro.toString())
+                    ejemplarLibro.setText(response.body()!!.ejemplarLibro.toString())
+                    editorialLibro.setText(response.body()!!.editorialLibro.toString())
+                    idiomaLibro.setText(response.body()!!.idiomaLibro.toString())
                 }
             }
 
-            override fun onFailure(call: Call<List<Libro>>, t: Throwable) {
+            override fun onFailure(call: Call<Libro>, t: Throwable) {
                 println(t.toString())
 
             }
         })
-        return libro
+
     }
     fun eliminarLibro(idLibro: Int, toast: Toast) {
         val r = RetrofitLibro.buildService(ApiServiceLibro::class.java)
